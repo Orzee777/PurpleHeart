@@ -1,4 +1,6 @@
 # Coding Notes
+##### These notes are useful for some basic dos/don'ts of this project
+
 
 #### You cannot use namespaces in Unreal classes 
 * there are exceptions but just don’t do it
@@ -11,6 +13,6 @@
   *Use*
   ```cpp
   std::string variableName = “example text”;
-      ```
+  ```
 
 #### Use ```FString``` instead of ```string```
