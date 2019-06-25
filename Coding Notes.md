@@ -3,12 +3,12 @@
 You cannot use namespaces in Unreal classes 
 * there are exceptions but just don’t do it
 *Instead of*
-``` cpp
+```cpp
 	using namespace std;
 	string variableName = “example text”;
 ```
 *Use*
-``` cpp
+```cpp
 	std::string variableName = “example text”;
 ```
 
