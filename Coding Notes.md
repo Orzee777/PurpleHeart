@@ -1,14 +1,14 @@
-##Coding Notes
+## Coding Notes
 
 You cannot use namespaces in Unreal classes 
 * there are exceptions but just don’t do it
 *Instead of*
-```C++
+``` cpp
 	using namespace std;
 	string variableName = “example text”;
 ```
 *Use*
-```C++
+``` cpp
 	std::string variableName = “example text”;
 ```
 
