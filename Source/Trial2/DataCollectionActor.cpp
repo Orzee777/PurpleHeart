@@ -13,7 +13,7 @@ void ADataCollectionActor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	writeToFile("C:\\Users\\bradi\\Desktop\\dataInfo\\input.txt", "it works!");
+	rewriteFile("C:\\Users\\bradi\\Desktop\\dataInfo\\input.txt", "it works!");
 }
 
 // Called every frame
@@ -25,6 +25,20 @@ void ADataCollectionActor::Tick(float DeltaTime)
 
 void ADataCollectionActor::writeToFile(FString filePath, FString content) {
 	FString completeFilePath = filePath;
-	FString fileContent = TEXT(content);
+	FString fileContent = content;
 	FFileHelper::SaveStringToFile(fileContent, *completeFilePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_Append);
 }
+
+void ADataCollectionActor::rewriteFile(FString filePath, FString content) {
+	FString completeFilePath = filePath;
+	FString fileContent = content;
+	FFileHelper::SaveStringToFile(fileContent, *completeFilePath);
+}
+
+int getParticipantNumber(FString inputFilePath) {
+	FString filePath = inputFilePath;
+	FString result;
+	FFileHelper::LoadFileToString(result, *filePath);
+	return FCString::Atoi(*result);
+}
+

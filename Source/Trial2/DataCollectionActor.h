@@ -19,6 +19,10 @@ public:
 	ADataCollectionActor();
 	void writeToFile(FString filePath, FString content);
 
+	void rewriteFile(FString filePath, FString content);
+
+	int getParticipantNumber(FString inputFilePath);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
