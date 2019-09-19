@@ -1,26 +1,35 @@
-
-
-#pragma once
+//#pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "trial.generated.h"
 
-UCLASS()
-class TRIAL2_API Atrial : public AActor
+class Trial
 {
-	GENERATED_BODY()
-	
-public:	
-	// Sets default values for this actor's properties
-	Atrial();
+private:
+	FString stimulus;
+	FString color;
+	static int totalTrials;
+	int trialNumber;
+	bool isCongruentTrial;
+	int correctLane;
+	int selectedLane = -1;
+	float reactionTime = 0; // in ms
+public:
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	Trial(FString stimulusWord, FString stimulusColor);
+	~Trial();
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
+	FString printTrial();
 
+	void setTrialNumber(int number);
+
+	int getTrialNumber();
+
+	FString getColor();
+
+	FString getStimulus();
+
+	void getResponse(int laneSelected);
+
+	//FString getTrialStats();
 };
+

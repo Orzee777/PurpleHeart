@@ -16,3 +16,9 @@
   ```
 
 #### Use ```FString``` instead of ```string```
+
+## Custom C++ blueprint functions
+
+#### Use ```static```
+
+#### Add ```UFUNCTION(BlueprintCallable, Category = "Trial")``` to all callable functions
