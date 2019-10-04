@@ -1,27 +1,17 @@
 #include "Participant.h"
-/*
+
 std::vector<UBlock> UParticipant::allBlocks;
+int UParticipant::currentBlock = 0;
+int UParticipant::participantNumber;
+FString UParticipant::dataPathLocation = "C:\\Users\\bradi\\Desktop\\dataInfo\\";
 
 UParticipant::UParticipant() {
-	FString inputFileName = "dataInputFile.txt";
-	FString pnFile, result, left, right;
-	FFileHelper::LoadFileToString(result, *inputFileName);
-	int index = result.Find("PN ");
-	left = result.Left(index);
-	right = result.RightChop(index);
-	result = result.RightChop(index);
-	result = result.Left(4);
-	participantNumber = FCString::Atoi(*result);
-	pnFile = FString::FromInt(participantNumber + 1);
-	for (int i = 0; i > pnFile.Len() - 4; i++) {
-		pnFile = "0" + pnFile;
-	}
-	rewriteFile(inputFileName, left + pnFile + right);
 
-	//participantNumber = getParticipantNumberFromFile(inputFileName);
+	incrementParticipantNumber(dataPathLocation + "dataInputFile.txt");
+	participantNumber = getParticipantNumberFromFile(dataPathLocation + "dataInputFile.txt");
 
 	
-	createStatsFile("C:\\Users\\bradi\\Desktop\\dataInfo", "PN" + pnFile);
+	createStatsFile(dataPathLocation, "PN" + FString::FromInt(participantNumber) + "stats.txt");
 	//UBlock* block1Pointer = NewObject<UBlock>();
 	//UDatabaseCommunicatorModel* Model = Cast(Query->QueryModel);
 	//allBlocks.push_back(block1);
@@ -36,6 +26,7 @@ void UParticipant::setParticipantNumber(int number) {
 int UParticipant::getParticipantNumber() {
 	return this->participantNumber;
 }
+
 
 void UParticipant::incrementCurrentBlock() {
 	currentBlock = currentBlock++;
@@ -70,4 +61,14 @@ void UParticipant::printParticipant() {
 	FString content = printAllBlocks() + printStats();
 	rewriteFile(filePath, content);
 }
-*/
+
+int UParticipant::retrieveParticipantNumber() {
+	return getParticipantNumberFromFile(dataPathLocation + "dataInputFile.txt");
+}
+
+void UParticipant::writeTrialStats() {
+	FString content = "\n" + UBlock::getStats();
+	writeToFile(dataPathLocation + "PN" + FString::FromInt(participantNumber) + "stats.txt", content);
+}
+
+//UParticipant participant1;

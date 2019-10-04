@@ -5,7 +5,7 @@
 #pragma once
 
 //#include "Block.h"
-//#include "Participant.h"
+//#include "Participant.h" DO NOT UNCOMMENT
 #include "FileHelper.h"
 #include "Paths.h"
 #include "CoreMinimal.h"

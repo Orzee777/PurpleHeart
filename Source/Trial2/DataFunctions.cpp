@@ -13,32 +13,48 @@ void rewriteFile(FString filePath, FString content) {
 }
 
 int getParticipantNumberFromFile(FString inputFilePath) {
-	FString filePath = inputFilePath;
-	FString result;
-	FFileHelper::LoadFileToString(result, *filePath);
-	incrementParticipantNumber(inputFilePath);
-	return FCString::Atoi(*result);
+	const TCHAR* inputFile = *inputFilePath;
+	FString pnFile, result, left, center, right = "";
+	int index, participantNumber = 0;
+
+	FFileHelper::LoadFileToString(result, inputFile);
+	index = result.Find("PN ") + 3;
+	left = result.Left(index);
+	center = result.RightChop(index);
+	center = center.Left(4);
+	right = result.RightChop(index + 4);
+
+	const TCHAR* newResult = *center;
+	participantNumber = FCString::Atoi(newResult);
+
+	rewriteFile("C:\\Users\\bradi\\Desktop\\dataInfo\\output.txt", FString::FromInt(participantNumber));
+	
+	return participantNumber;
 }
 
 void incrementParticipantNumber(FString inputFilePath) {
-	FString inputFileName = "dataInputFile.txt";
-	FString pnFile, result, left, right = "";
+	const TCHAR* inputFile = *inputFilePath;
+	FString pnFile, result, left, center, right = "";
 	int index = 0;
-	int participantNumber;
-
-	FFileHelper::LoadFileToString(result, *inputFileName);
-	index = result.Find("PN ");
+	int participantNumber = 0;
+	
+	FFileHelper::LoadFileToString(result, inputFile);
+	index = result.Find("PN ") + 3;
 	left = result.Left(index);
-	right = result.RightChop(index);
-	result = result.RightChop(index);
-	result = result.Left(4);
-	participantNumber = FCString::Atoi(*result);
+	center = result.RightChop(index);
+	center = center.Left(4);
+	right = result.RightChop(index + 4);
+
+	const TCHAR* newResult = *center;
+	participantNumber = FCString::Atoi(newResult);
+	
 	pnFile = FString::FromInt(participantNumber + 1);
-	for (int i = 0; i > pnFile.Len() - 4; i++) {
+
+	for (int i = 0; i < pnFile.Len() - 4; i++) {
 		pnFile = "0" + pnFile;
 	}
-	
-	rewriteFile(inputFileName, left + pnFile + right);
+
+	rewriteFile(inputFilePath, left + pnFile + right);
 }
 
 FString fixToWidth(FString word, int width) {
@@ -55,19 +71,16 @@ FString fixToWidth(FString word, int width) {
 	}
 }
 
+
 void createStatsFile(FString filePath, FString fileName) {
 	FString content = "Trial,\"Stimulus Color\",\"Stimulus Word\",Congruent?,Correct?,Selection,\"Correct Lane\",\"Reaction Time\"";
 	// take all variables and convert them into a stats file
 	writeToFile(filePath + fileName, content);
 }
 
-
-/*
-void writeToStatsFile(FString filePath, FString fileName, UBlock block) {
-	writeToFile(filePath + fileName, block.getStats());
+void writeToStatsFile(FString filePath, FString fileName) {
+	writeToFile(filePath + fileName, "");
 }
-*/
-
 
 // File Directory
 //FString fileDirectory = "C:\\Users\\bradi\\Desktop\\dataInfo";

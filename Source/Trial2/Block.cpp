@@ -3,6 +3,8 @@
 std::vector<Trial> UBlock::block;
 int UBlock::blockNumber;
 int UBlock::currentTrialNumber = 0;
+float UBlock::startReactionTime;
+float UBlock::endReactionTime;
 
 UBlock::UBlock()
 {
@@ -99,13 +101,19 @@ FString UBlock::getStimulus() {
 	return block[currentTrialNumber].getStimulus();
 }
 
-void UBlock::getResponse(int response) {
+void UBlock::getResponse(int response, float end) {
 	
 	// Trial.cpp handles the dataStream and other info
+
+	endReactionTime = end;
+
+	float reactionTime = end - getStartReactionTime();
 	
-	//block[currentTrialNumber].getResponse(response);
+	block[currentTrialNumber].getResponse(response, reactionTime);
 
 	// write to fileStream
+
+	writeToFile("C:\\Users\\bradi\\Desktop\\dataInfo\\response.txt", block[currentTrialNumber].printTrial());
 
 	//writeToFile("C:\\Users\\bradi\\Desktop\\dataInfo\\response.txt", FString::FromInt(response));
 
@@ -113,11 +121,9 @@ void UBlock::getResponse(int response) {
 
 }
 
-/*
 FString UBlock::getStats() {
-	return block[blockNumber].getTrialStats();
+	return block[currentTrialNumber-1].getTrialStats();
 }
-*/
 
 bool UBlock::isNextTrial() {
 	if (currentTrialNumber < block.size()) {
@@ -126,4 +132,12 @@ bool UBlock::isNextTrial() {
 	else {
 		return false;
 	}
+}
+
+void UBlock::startTimer(float start) {
+	startReactionTime = start;
+}
+
+float UBlock::getStartReactionTime() {
+	return startReactionTime;
 }

@@ -16,16 +16,16 @@ Trial::Trial(FString stimulusWord, FString stimulusColor)
 	}
 
 	if (color == "red") {
-		correctLane = 0;
-	}
-	else if (color == "blue") {
 		correctLane = 1;
 	}
-	else if (color == "green") {
+	else if (color == "blue") {
 		correctLane = 2;
 	}
-	else if (color == "yellow") {
+	else if (color == "green") {
 		correctLane = 3;
+	}
+	else if (color == "yellow") {
+		correctLane = 4;
 	}
 	else {}
 }
@@ -44,17 +44,17 @@ FString Trial::printTrial() {
 	return output;
 }
 
-/*
+
 FString Trial::getTrialStats() {
 	FString congruent, correct, output;
 	congruent = (isCongruentTrial) ? "YES" : "NO";
 	correct = (correctLane == selectedLane) ? "YES" : "NO";
 	output = FString::FromInt(trialNumber) + "," + color + "," + stimulus + "," + congruent + "," + correct + ","
-		+ FString::FromInt(selectedLane) + "," + FString::FromInt(correctLane) + "," + FString::SanitizeFloat(6);
+		+ FString::FromInt(selectedLane) + "," + FString::FromInt(correctLane) + "," + FString::SanitizeFloat(reactionTime * 1000, 2);
 
 	return output;
 }
-*/
+
 void Trial::setTrialNumber(int number) {
 	this->trialNumber = number;
 }
@@ -71,12 +71,13 @@ FString Trial::getStimulus() {
 	return stimulus;
 }
 
-void Trial::getResponse(int laneSelected) {
+void Trial::getResponse(int laneSelected, float reactTime) {
+
 	// send data to dataStream
-	
+
 
 	// get Elapsed time
-	reactionTime = 100.00;
+	reactionTime = reactTime;
 
 	selectedLane = laneSelected;
 }

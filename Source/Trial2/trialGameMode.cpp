@@ -10,6 +10,7 @@ AtrialGameMode::AtrialGameMode() {
 	FString inputFileName = "C:\\Users\\bradi\\Desktop\\dataInputFile.txt";
 	
 	getParticipantNumberFromFile(inputFileName);
+	incrementParticipantNumber(inputFileName);
 
 
 	//createStatsFile("C:\\Users\\bradi\\Desktop\\dataInfo", "PN" + pnFile);

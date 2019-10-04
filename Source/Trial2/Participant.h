@@ -11,12 +11,14 @@ UCLASS()
 class TRIAL2_API UParticipant : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-		/*
+	
 private:
-	int participantNumber;
-	int currentBlock = 0;
+	static int participantNumber;
+	static FString dataPathLocation;
+	static int currentBlock;
 	static std::vector<UBlock> allBlocks;
 public:
+	
 	UParticipant();
 	~UParticipant();
 
@@ -42,5 +44,10 @@ public:
 	FString printAllBlocks();
 
 	void printParticipant();
-	*/
+
+	UFUNCTION(BlueprintCallable, Category = "Participant")
+	static int retrieveParticipantNumber();
+
+	UFUNCTION(BlueprintCallable, Category = "Participant")
+	static void writeTrialStats();
 };

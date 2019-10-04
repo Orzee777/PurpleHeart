@@ -28,8 +28,8 @@ public:
 
 	FString getStimulus();
 
-	void getResponse(int laneSelected);
+	void getResponse(int laneSelected, float reactTime);
 
-	//FString getTrialStats();
+	FString getTrialStats();
 };
 

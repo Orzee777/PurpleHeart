@@ -18,6 +18,8 @@ private:
 	static std::vector<Trial> block;
 	static int blockNumber;
 	static int currentTrialNumber;
+	static float startReactionTime;
+	static float endReactionTime;
 public:
 	UBlock();
 	~UBlock();
@@ -39,13 +41,20 @@ public:
 	static FString getColor();
 
 	UFUNCTION(BlueprintCallable, Category = "Trial")
-	static void getResponse(int response);
+	static void getResponse(int response, float end);
 
 	UFUNCTION(BlueprintCallable, Category = "Trial")
 	static bool isNextTrial();
 
 	// used in dataFunctions.cpp
-	//static FString getStats();
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	static FString getStats();
+
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	static void startTimer(float start);
+
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	static float getStartReactionTime();
 
 	//UFUNCTION(BlueprintCallable, Category = "Trial")
 	//static void printParticipantData();
