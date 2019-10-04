@@ -23,6 +23,7 @@ public:
 	void setTrialNumber(int number);
 
 	int getTrialNumber();
+	int getCorrectLane();
 
 	FString getColor();
 

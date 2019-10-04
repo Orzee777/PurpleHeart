@@ -71,6 +71,10 @@ FString Trial::getStimulus() {
 	return stimulus;
 }
 
+int Trial::getCorrectLane() {
+	return correctLane;
+}
+
 void Trial::getResponse(int laneSelected, float reactTime) {
 
 	// send data to dataStream

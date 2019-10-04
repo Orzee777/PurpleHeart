@@ -141,3 +141,12 @@ void UBlock::startTimer(float start) {
 float UBlock::getStartReactionTime() {
 	return startReactionTime;
 }
+
+bool UBlock::isCorrect(int response) {
+	if (block[currentTrialNumber].getCorrectLane() == response) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}

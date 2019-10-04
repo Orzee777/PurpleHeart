@@ -56,6 +56,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Trial")
 	static float getStartReactionTime();
 
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	static bool isCorrect (int response);
+
 	//UFUNCTION(BlueprintCallable, Category = "Trial")
 	//static void printParticipantData();
 };
