@@ -3,7 +3,7 @@
 std::vector<UBlock> UParticipant::allBlocks;
 int UParticipant::currentBlock = 0;
 int UParticipant::participantNumber;
-FString UParticipant::dataPathLocation = "C:\\Users\\bradi\\Desktop\\dataInfo\\";
+FString UParticipant::dataPathLocation = FString(FPlatformProcess::UserDir()) + "\\GameData\\";
 
 UParticipant::UParticipant() {
 
@@ -11,7 +11,7 @@ UParticipant::UParticipant() {
 	participantNumber = getParticipantNumberFromFile(dataPathLocation + "dataInputFile.txt");
 
 	
-	createStatsFile(dataPathLocation, "PN" + FString::FromInt(participantNumber) + "stats.txt");
+	createStatsFile(dataPathLocation + "Stats\\", "PN" + FString::FromInt(participantNumber) + "stats.txt");
 	//UBlock* block1Pointer = NewObject<UBlock>();
 	//UDatabaseCommunicatorModel* Model = Cast(Query->QueryModel);
 	//allBlocks.push_back(block1);
@@ -26,7 +26,6 @@ void UParticipant::setParticipantNumber(int number) {
 int UParticipant::getParticipantNumber() {
 	return this->participantNumber;
 }
-
 
 void UParticipant::incrementCurrentBlock() {
 	currentBlock = currentBlock++;
@@ -68,7 +67,7 @@ int UParticipant::retrieveParticipantNumber() {
 
 void UParticipant::writeTrialStats() {
 	FString content = "\n" + UBlock::getStats();
-	writeToFile(dataPathLocation + "PN" + FString::FromInt(participantNumber) + "stats.txt", content);
+	writeToFile(dataPathLocation + "\\Stats\\PN" + FString::FromInt(participantNumber) + "stats.txt", content);
 }
 
 //UParticipant participant1;

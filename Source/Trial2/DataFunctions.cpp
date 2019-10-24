@@ -26,8 +26,6 @@ int getParticipantNumberFromFile(FString inputFilePath) {
 
 	const TCHAR* newResult = *center;
 	participantNumber = FCString::Atoi(newResult);
-
-	rewriteFile("C:\\Users\\bradi\\Desktop\\dataInfo\\output.txt", FString::FromInt(participantNumber));
 	
 	return participantNumber;
 }
@@ -73,7 +71,7 @@ FString fixToWidth(FString word, int width) {
 
 
 void createStatsFile(FString filePath, FString fileName) {
-	FString content = "Trial,\"Stimulus Color\",\"Stimulus Word\",Congruent?,Correct?,Selection,\"Correct Lane\",\"Reaction Time\"";
+	FString content = "Level,Trial,\"Stimulus Color\",\"Stimulus Word\",Congruent?,Correct?,Selection,\"Correct Lane\",\"Reaction Time\"";
 	// take all variables and convert them into a stats file
 	writeToFile(filePath + fileName, content);
 }

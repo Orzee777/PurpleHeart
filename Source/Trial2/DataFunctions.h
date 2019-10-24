@@ -23,5 +23,3 @@ FString fixToWidth(FString word, int width);
 void createStatsFile(FString filePath, FString fileName);
 
 //void writeToStatsFile(FString filePath, FString fileName, UBlock block);
-
-//FString fileDirectory = "C:\\Users\\bradi\\Desktop\\dataInfo";

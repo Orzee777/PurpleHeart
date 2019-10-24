@@ -40,16 +40,19 @@ FString Trial::printTrial() {
 		"  *** TRIAL " + FString::FromInt(this->getTrialNumber()) + " ***" + "\n" +
 		"    stimulus text: " + stimulus + "\n"
 		"    stimulus color: " + color + "\n"
-		"    lane selected: " + FString::FromInt(selectedLane) + " correct: " + FString::FromInt(correctLane) + "\n";
+		"    lane selected: " + FString::FromInt(selectedLane) + "\n"
+		"    correct: " + FString::FromInt(correctLane) + "\n"
+		"    reaction time: " + FString::SanitizeFloat(reactionTime * 1000) + "\n";
 	return output;
 }
 
 
 FString Trial::getTrialStats() {
+	int levelNumber = 0; // addable in the future
 	FString congruent, correct, output;
-	congruent = (isCongruentTrial) ? "YES" : "NO";
-	correct = (correctLane == selectedLane) ? "YES" : "NO";
-	output = FString::FromInt(trialNumber) + "," + color + "," + stimulus + "," + congruent + "," + correct + ","
+	congruent = (isCongruentTrial) ? "1" : "0";
+	correct = (correctLane == selectedLane) ? "1" : "0";
+	output = FString::FromInt(levelNumber) + "," + FString::FromInt(trialNumber) + "," + color + "," + stimulus + "," + congruent + "," + correct + ","
 		+ FString::FromInt(selectedLane) + "," + FString::FromInt(correctLane) + "," + FString::SanitizeFloat(reactionTime * 1000, 2);
 
 	return output;

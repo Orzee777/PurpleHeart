@@ -113,7 +113,7 @@ void UBlock::getResponse(int response, float end) {
 
 	// write to fileStream
 
-	writeToFile("C:\\Users\\bradi\\Desktop\\dataInfo\\response.txt", block[currentTrialNumber].printTrial());
+	writeToFile(FString(FPlatformProcess::UserDir()) + "\\GameData\\Logs\\response.txt", block[currentTrialNumber].printTrial());
 
 	//writeToFile("C:\\Users\\bradi\\Desktop\\dataInfo\\response.txt", FString::FromInt(response));
 
