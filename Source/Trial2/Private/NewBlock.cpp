@@ -201,6 +201,6 @@ void ANewBlock::getParticipantNumberForBlock(int pn) {
 }
 
 void ANewBlock::initializeLogFile() {
-	FString content = "Operation Purple Heart v1.0.0\nPN " + FString::FromInt(participantNumber) + "\n" + FDateTime::Now().ToString() + "\n";
+	FString content = "Operation Purple Heart v1.0.0\nPN " + FString::FromInt(participantNumber) + "\n" + FDateTime::Now().ToString() + "\n===========================\n";
 	writeToFile(logPathLocation + FString::FromInt(participantNumber) + "log.txt", content);
 }
