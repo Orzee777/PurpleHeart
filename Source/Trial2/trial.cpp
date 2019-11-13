@@ -49,11 +49,13 @@ FString Trial::printTrial() {
 
 FString Trial::getTrialStats() {
 	int levelNumber = 0; // addable in the future
+	int roundedRT; // the reaction time in in ms as a float, we're changing it to a rounded ms
+	roundedRT = FMath::FloorToInt(reactionTime * 100000) / 100;
 	FString congruent, correct, output;
 	congruent = (isCongruentTrial) ? "1" : "0";
 	correct = (correctLane == selectedLane) ? "1" : "0";
 	output = FString::FromInt(levelNumber) + "," + FString::FromInt(trialNumber) + "," + color + "," + stimulus + "," + congruent + "," + correct + ","
-		+ FString::FromInt(selectedLane) + "," + FString::FromInt(correctLane) + "," + FString::SanitizeFloat(reactionTime * 1000, 2);
+		+ FString::FromInt(selectedLane) + "," + FString::FromInt(correctLane) + "," + FString::FromInt(roundedRT);
 
 	return output;
 }

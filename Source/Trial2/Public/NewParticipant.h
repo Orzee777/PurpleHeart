@@ -1,28 +1,33 @@
-/*#pragma once
+#pragma once
 
 #include <vector>
-#include "Public/NewBlock.h"
-//#include "Block.h"
+#include "NewBlock.h"
 #include "DataFunctions.h"
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
-#include "Participant.generated.h"
+#include "CoreMinimal.h"
+#include "GameFramework/Actor.h"
+#include "NewParticipant.generated.h"
 
 UCLASS()
-class TRIAL2_API UParticipant : public UBlueprintFunctionLibrary
+class TRIAL2_API ANewParticipant : public AActor
 {
 	GENERATED_BODY()
 	
+public:	
+	// Sets default values for this actor's properties
+	ANewParticipant();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
 private:
 	static int participantNumber;
 	static FString dataPathLocation;
 	static int currentBlock;
 	static std::vector<ANewBlock> allBlocks;
 public:
-	
-	UParticipant();
-	~UParticipant();
-
 	// accuracy of participant so far (100.00%)
 	float participantAccuracy = 0;
 
@@ -35,11 +40,12 @@ public:
 	// total number of trials so far
 	int participantTotal = 0;
 
-	void setParticipantNumber(int number);
-	int getParticipantNumber();
-
-	void incrementCurrentBlock();
-	int getCurrentBlock();
+	UFUNCTION(Blueprintcallable, Category = "Participant")
+	static void setParticipantNumber(int number);
+	UFUNCTION(Blueprintcallable, Category = "Participant")
+	static void changeParticipantNumber(int number);
+	UFUNCTION(Blueprintcallable, Category = "Participant")
+	static int getParticipantNumber();
 
 	FString printStats();
 	FString printAllBlocks();
@@ -51,5 +57,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Participant")
 	static void writeTrialStats();
+
+	UFUNCTION(BlueprintCallable, Category = "Participant")
+	static void setupData();
+
 };
-*/

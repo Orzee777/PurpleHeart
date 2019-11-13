@@ -4,8 +4,6 @@
 
 #pragma once
 
-//#include "Block.h"
-//#include "Participant.h" DO NOT UNCOMMENT
 #include "FileHelper.h"
 #include "Paths.h"
 #include "CoreMinimal.h"
@@ -18,8 +16,12 @@ int getParticipantNumberFromFile(FString inputFilePath);
 
 void incrementParticipantNumber(FString inputFilePath);
 
+void rewriteParticipantNumber(FString inputFilePath, int newNumber);
+
 FString fixToWidth(FString word, int width);
 
 void createStatsFile(FString filePath, FString fileName);
+
+FString fourDigitIntToString(int num);
 
 //void writeToStatsFile(FString filePath, FString fileName, UBlock block);

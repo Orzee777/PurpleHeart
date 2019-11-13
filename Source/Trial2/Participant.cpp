@@ -1,6 +1,6 @@
-#include "Participant.h"
+/*#include "Participant.h"
 
-std::vector<UBlock> UParticipant::allBlocks;
+std::vector<ANewBlock> UParticipant::allBlocks;
 int UParticipant::currentBlock = 0;
 int UParticipant::participantNumber;
 FString UParticipant::dataPathLocation = FString(FPlatformProcess::UserDir()) + "\\GameData\\";
@@ -12,7 +12,8 @@ UParticipant::UParticipant() {
 
 	
 	createStatsFile(dataPathLocation + "Stats\\", "PN" + FString::FromInt(participantNumber) + "stats.txt");
-	//UBlock* block1Pointer = NewObject<UBlock>();
+
+	//ANewBlock* block1Pointer = NewObject<ANewBlock>();
 	//UDatabaseCommunicatorModel* Model = Cast(Query->QueryModel);
 	//allBlocks.push_back(block1);
 }
@@ -66,8 +67,9 @@ int UParticipant::retrieveParticipantNumber() {
 }
 
 void UParticipant::writeTrialStats() {
-	FString content = "\n" + UBlock::getStats();
+	FString content = "\n" + ANewBlock::getStats();
 	writeToFile(dataPathLocation + "\\Stats\\PN" + FString::FromInt(participantNumber) + "stats.txt", content);
 }
 
 //UParticipant participant1;
+*/

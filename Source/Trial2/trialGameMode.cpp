@@ -1,3 +1,4 @@
+/*
 #include "trialGameMode.h"
 
 std::vector<UBlock> AtrialGameMode::allBlocks;
@@ -60,3 +61,4 @@ void AtrialGameMode::printParticipant() {
 	FString content = printAllBlocks() + printStats();
 	rewriteFile(filePath, content);
 }
+*/

@@ -1,3 +1,4 @@
+/*
 #pragma once
 
 #include <vector>
@@ -47,3 +48,4 @@ public:
 	void printParticipant();
 	
 };
+*/

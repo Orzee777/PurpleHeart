@@ -1,4 +1,3 @@
-/*
 #pragma once
 
 #include <algorithm>
@@ -7,23 +6,36 @@
 #include "DataFunctions.h"
 #include "Trial.h"
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
-#include "Block.generated.h" // must be last
+#include "GameFramework/Actor.h"
+#include "NewBlock.generated.h"
 
 UCLASS()
-class TRIAL2_API UBlock : public UBlueprintFunctionLibrary
+class TRIAL2_API ANewBlock : public AActor
 {
 	GENERATED_BODY()
 
 private:
 	static std::vector<Trial> block;
 	static int blockNumber;
-	static int currentTrialNumber;
+	static int currentTrialNumber;		// total Trial Number overall
+	static int blockTrialNumber;		// Trial Number of current Block
 	static float startReactionTime;
 	static float endReactionTime;
-public:
-	UBlock();
-	~UBlock();
+	static int participantNumber;		// participant number from NewParticipant
+
+	static FString logPathLocation;
+	
+public:	
+	// Sets default values for this actor's properties
+	ANewBlock();
+
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
 	FString printBlock();
 
@@ -47,6 +59,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Trial")
 	static bool isNextTrial();
 
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	static bool isBreak(int count);
+
 	// used in dataFunctions.cpp
 	UFUNCTION(BlueprintCallable, Category = "Trial")
 	static FString getStats();
@@ -58,9 +73,17 @@ public:
 	static float getStartReactionTime();
 
 	UFUNCTION(BlueprintCallable, Category = "Trial")
-	static bool isCorrect (int response);
+	static bool isCorrect(int response);
 
-	//UFUNCTION(BlueprintCallable, Category = "Trial")
-	//static void printParticipantData();
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	static int getBlockNumber();
+
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	static void incrementBlockNumber();
+
+	UFUNCTION(BlueprintCallable, Category = "Participant")
+	static void getParticipantNumberForBlock(int pn);
+
+	UFUNCTION(BlueprintCallable, Category = "Participant")
+	static void initializeLogFile();
 };
-*/
